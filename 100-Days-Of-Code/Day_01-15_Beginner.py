@@ -1,3 +1,4 @@
+# memail mfybylbobwicbnakpn@bbitq.com #
 #--------------------------------------------- Day1: *bad* Band Name Generator ---------------------------------------------#
 
 def BandNameGenerator(city,pet):
@@ -11,6 +12,7 @@ def BandNameGenerator(city,pet):
     # Provide nonsense entertainment and store user information.
     print(f"\nYour band name could be \"{city} {pet}\"\n\n")
 
+# BandNameGenerator()
 
 #----------------------------- Day2 Project: Tip Calculator -----------------------------#
 
@@ -29,6 +31,8 @@ def TipCalculator(total_bill,customers,tip_percent):
 
     # Provide nonsense output and store user information.
     print(f"Each person should contribue: ${(total_bill*((tip_percent*.01)+1))/customers}\n\n")
+
+#TipCalculator()
 
 
 #----------------------------- Day3 Project: Traffic Game -----------------------------#
@@ -65,4 +69,48 @@ def traffic_game():
     else:
         print("\nThere is no way you will make it to work on time. YOU'RE FIRED!!!\n")
 
-traffic_game()
+# traffic_game()
+
+
+#----------------------------- Day4 Project: Rock, Paper, Scissors -----------------------------#
+
+def rock_paper_scissors():
+    import random
+
+    options = ("Rock","Paper","Scissors")
+
+    comp_choice = options[random.randint(0,2)].lower()
+
+    player_choice = input("Choose rock, paper, or scissors.\n").lower()
+
+    print("\nComputer chose", comp_choice+"...")
+
+    def player_lost():
+        return ((player_choice.startswith("r") and comp_choice.startswith("p")) 
+                or (player_choice.startswith("p") and comp_choice.startswith("s")) 
+                or (player_choice.startswith("s") and comp_choice.startswith("r")))
+
+    def player_won():
+        return ((comp_choice.startswith("r") and player_choice.startswith("p")) 
+                or (comp_choice.startswith("p") and player_choice.startswith("s")) 
+                or (comp_choice.startswith("s") and player_choice.startswith("r")))
+
+    def player_tie():
+        return ((comp_choice.startswith("r") and player_choice.startswith("r")) 
+            or (comp_choice.startswith("p") and player_choice.startswith("p")) 
+            or (comp_choice.startswith("s") and player_choice.startswith("s")))
+
+
+    if player_lost():
+        print("sOrRy, YoU lOsT!")
+
+    elif player_won():
+        print("Hey... you won!")
+
+    elif player_tie():
+        print("Tie game.")
+
+    else:
+        print("You didn't make a valid choice")
+
+# rock_paper_scissors()
