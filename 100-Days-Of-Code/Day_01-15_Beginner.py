@@ -128,11 +128,13 @@ def PasswordGenerator():
     symbols = "!@#$%^&*,."
     all_characters = lower_letters+upper_letters+numbers+symbols
 
+
     print("Welcome to the Password Generator\n\n")
 
     user_choice = input("Enter a '1' for an auto-generated password ("+auto_length+" characters).\nEnter a '2' to customize your generated password.\n\n")
     pass_array = []
-    print(type(pass_array))
+
+
     if user_choice=='1':
         for x in range(int(auto_length)):
             pass_array.append(all_characters[random.randint(0,len(all_characters)-1)])
@@ -160,7 +162,7 @@ def PasswordGenerator():
         print("That is not a valid choice my friend...")
         exit()
 
-    print(type(pass_array))
+
     user_pass = ""
     for x in pass_array:
         user_pass+=x
@@ -169,22 +171,4 @@ def PasswordGenerator():
 
 PasswordGenerator()
 
-
-#----------------------------- TEST ZONE -----------------------------#
-
-
-# import random
-
-# symbols = "!@#$%^&*,."
-
-# myArray = [1,2,3,4]
-
-
-# print(type(myArray))
-
-# for x in myArray:
-#     print(x)
-
-# myArray.append(symbols[random.randint(0,len(symbols)-1)])
-
-# print(type(myArray))
+#----------------------------- Day6 Project: -----------------------------#
