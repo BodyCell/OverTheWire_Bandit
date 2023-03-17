@@ -114,3 +114,77 @@ def rock_paper_scissors():
         print("You didn't make a valid choice")
 
 # rock_paper_scissors()
+
+#----------------------------- Day5 Project: Password Generator -----------------------------#
+
+def PasswordGenerator():
+    import random
+
+
+    auto_length = "16"
+    lower_letters = "abcdefghijklmnopqrstuvwxyz"
+    upper_letters = lower_letters.upper()
+    numbers = "0123456789"
+    symbols = "!@#$%^&*,."
+    all_characters = lower_letters+upper_letters+numbers+symbols
+
+    print("Welcome to the Password Generator\n\n")
+
+    user_choice = input("Enter a '1' for an auto-generated password ("+auto_length+" characters).\nEnter a '2' to customize your generated password.\n\n")
+    pass_array = []
+    print(type(pass_array))
+    if user_choice=='1':
+        for x in range(int(auto_length)):
+            pass_array.append(all_characters[random.randint(0,len(all_characters)-1)])
+
+    elif user_choice=='2':
+        num_lower_letters = int(input("How many lower case letters would you like?\n"))
+        for x in range(num_lower_letters):
+            pass_array.append(lower_letters[random.randint(0,len(lower_letters)-1)])
+        
+        num_upper_letters = int(input("How many upper case letters would you like?\n"))
+        for x in range(num_upper_letters):
+            pass_array.append(upper_letters[random.randint(0,len(upper_letters)-1)])
+ 
+        num_numbers = int(input("How many numbers would you like?\n"))
+        for x in range(num_numbers):
+            pass_array.append(numbers[random.randint(0,len(numbers)-1)])
+
+        num_symbols = int(input("How many symbols would you like?\n"))
+        for x in range(num_symbols):
+            pass_array.append(symbols[random.randint(0,len(symbols)-1)])
+        
+        random.shuffle(pass_array)
+
+    else:
+        print("That is not a valid choice my friend...")
+        exit()
+
+    print(type(pass_array))
+    user_pass = ""
+    for x in pass_array:
+        user_pass+=x
+    print("Your generated password is: '"+user_pass+"'")
+
+
+PasswordGenerator()
+
+
+#----------------------------- TEST ZONE -----------------------------#
+
+
+# import random
+
+# symbols = "!@#$%^&*,."
+
+# myArray = [1,2,3,4]
+
+
+# print(type(myArray))
+
+# for x in myArray:
+#     print(x)
+
+# myArray.append(symbols[random.randint(0,len(symbols)-1)])
+
+# print(type(myArray))
