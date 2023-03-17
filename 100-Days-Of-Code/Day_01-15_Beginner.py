@@ -169,6 +169,7 @@ def PasswordGenerator():
     print("Your generated password is: '"+user_pass+"'")
 
 
-PasswordGenerator()
+# PasswordGenerator()
 
 #----------------------------- Day6 Project: -----------------------------#
+
