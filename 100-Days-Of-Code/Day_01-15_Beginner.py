@@ -193,3 +193,145 @@ def PasswordGenerator():
 #     else:
 #         turn_right()
 #         move()
+
+#----------------------------- Day7 Project: Hangman -----------------------------#
+
+def Hangman():
+    import random
+
+    #Define all of the static variables.
+    stages = ['''
+      +---+
+      |   |
+      O   |
+     /|\  |
+     / \  |
+    *DONE*|
+    =========
+    ''', '''
+      +---+
+      |   |
+      O   |
+     /|\  |
+     /    |
+          |
+    =========
+    ''', '''
+      +---+
+      |   |
+      O   |
+     /|\  |
+          |
+          |
+    =========
+    ''', '''
+      +---+
+      |   |
+      O   |
+     /|   |
+          |
+          |
+    =========''', '''
+      +---+
+      |   |
+      O   |
+      |   |
+          |
+          |
+    =========
+    ''', '''
+      +---+
+      |   |
+      O   |
+          |
+          |
+          |
+    =========
+    ''', '''
+      +---+
+      |   |
+          |
+          |
+          |
+          |
+    =========
+    ''']
+
+    animals = ["anaconda", "baboon", "camel", "dolphin", "eagle", "flamingo", "groundhog", "bobcat", "goldfish", "quail", "vulture"]
+    colors = ["cyan", "magenta", "violet", "indigo", "burgundy", "silver", "beige", "nude", "cream"]
+    food = ["eggplant", "dumplings", "cauliflower", "alfredo", "tortilla", "grits", "cheesecake", "potato", "salmon", "jalapeno"]
+    categories = {"animals":animals, "colors":colors, "food":food}
+
+    def show_status(display):
+        print(stages[lives])
+        print(f"\n{' '.join(display)}")
+        print(f"Lives remaing: {lives}")
+        print(f"Guessed letters: {guessed_letters}\n")
+
+
+    def player_win():
+        return "_" not in display
+
+
+    def player_lose():
+        return lives == 0
+    
+
+    def play_again(again):
+        while not again.startswith("Y") and not again.startswith("N"):
+            again = input("Would you like to play again? (Y/N)\n").upper()
+        return again.startswith("Y")
+
+
+# ######################### 
+# GAME LOGIC STARTS HERE
+# ######################### 
+
+    while True:
+        #Initialize the dynamic variables.
+        again=""
+        secret_cat = random.choice(list(categories.keys()))
+        secret = categories[secret_cat][random.randint(0,len(categories[secret_cat])-1)].upper()
+        display = ["_" for x in secret]
+        guess=''
+        guessed_letters=[]
+        lives=6
+
+        print(f"The category is: '{secret_cat.title()}'\n")
+
+
+        show_status(display)
+
+        while True:
+            print(secret) #For debugging purposes only. NO CHEATING! ;)
+
+            #Request guess from the user.
+            guess = input("Guess a letter: ").upper()
+
+            #Check the user guess against the guessed_letter list first, and then the secret word.
+            if guess not in guessed_letters:
+                guessed_letters.append(guess)
+            #If the letter at that position matches 'guess' then reveal that letter in the display at that position.
+                for x in range(len(secret)):
+                    if secret[x] == guess:
+                        display[x]=guess
+                if guess not in secret:
+                    lives-=1
+            else:
+                print(display)
+                print(f"***You have already guessed {guess}!")
+
+            show_status(display)
+
+
+            if player_win():
+                print("You win!!")
+                break
+            elif player_lose():
+                print("You ran out of lives :(")
+                break
+        if not play_again(again):
+            break
+    print("\nGAME OVER! Application closing...\n\n")
+
+# Hangman()
