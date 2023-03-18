@@ -197,70 +197,20 @@ def PasswordGenerator():
 #----------------------------- Day7 Project: Hangman -----------------------------#
 
 def Hangman():
-    import random
+    import random, beginner_modules.Hangman as hangman
+
 
     #Define all of the static variables.
-    stages = ['''
-      +---+
-      |   |
-      O   |
-     /|\  |
-     / \  |
-    *DONE*|
-    =========
-    ''', '''
-      +---+
-      |   |
-      O   |
-     /|\  |
-     /    |
-          |
-    =========
-    ''', '''
-      +---+
-      |   |
-      O   |
-     /|\  |
-          |
-          |
-    =========
-    ''', '''
-      +---+
-      |   |
-      O   |
-     /|   |
-          |
-          |
-    =========''', '''
-      +---+
-      |   |
-      O   |
-      |   |
-          |
-          |
-    =========
-    ''', '''
-      +---+
-      |   |
-      O   |
-          |
-          |
-          |
-    =========
-    ''', '''
-      +---+
-      |   |
-          |
-          |
-          |
-          |
-    =========
-    ''']
+    
+    stages = hangman.stages()
 
-    animals = ["anaconda", "baboon", "camel", "dolphin", "eagle", "flamingo", "groundhog", "bobcat", "goldfish", "quail", "vulture"]
-    colors = ["cyan", "magenta", "violet", "indigo", "burgundy", "silver", "beige", "nude", "cream"]
-    food = ["eggplant", "dumplings", "cauliflower", "alfredo", "tortilla", "grits", "cheesecake", "potato", "salmon", "jalapeno"]
-    categories = {"animals":animals, "colors":colors, "food":food}
+    a1 = hangman.animals()
+    # animals = ["anaconda", "baboon", "camel", "dolphin", "eagle", "flamingo", "groundhog", "bobcat", "goldfish", "quail", "vulture"] #BASIC ANIMALS LIST FOR TESTING
+    c1 = hangman.colors()
+    # colors = ["cyan", "magenta", "violet", "indigo", "burgundy", "silver", "beige", "nude", "cream"] #BASIC COLORS LIST FOR TESTING
+    f1 = hangman.foods()
+    # food = ["eggplant", "dumplings", "cauliflower", "alfredo", "tortilla", "grits", "cheesecake", "potato", "salmon", "jalapeno"] #BASIC FOODS LIST FOR TESTING
+    categories = {"animals":a1, "colors":c1, "food":f1}
 
     def show_status(display):
         print(stages[lives])
@@ -292,7 +242,7 @@ def Hangman():
         again=""
         secret_cat = random.choice(list(categories.keys()))
         secret = categories[secret_cat][random.randint(0,len(categories[secret_cat])-1)].upper()
-        display = ["_" for x in secret]
+        display = ["-" if x in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" else x for x in secret]
         guess=''
         guessed_letters=[]
         lives=6
