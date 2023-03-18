@@ -242,7 +242,7 @@ def Hangman():
         again=""
         secret_cat = random.choice(list(categories.keys()))
         secret = categories[secret_cat][random.randint(0,len(categories[secret_cat])-1)].upper()
-        display = ["-" if x in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" else x for x in secret]
+        display = ["_" if x in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" else x for x in secret]
         guess=''
         guessed_letters=[]
         lives=6
@@ -253,7 +253,7 @@ def Hangman():
         show_status(display)
 
         while True:
-            print(secret) #For debugging purposes only. NO CHEATING! ;)
+            # print(secret) #For debugging purposes only. NO CHEATING! ;)
 
             #Request guess from the user.
             guess = input("Guess a letter: ").upper()
@@ -278,10 +278,10 @@ def Hangman():
                 print("You win!!")
                 break
             elif player_lose():
-                print("You ran out of lives :(")
+                print(f"You ran out of lives :(\nThe word was {secret}!")
                 break
         if not play_again(again):
             break
     print("\nGAME OVER! Application closing...\n\n")
 
-# Hangman()
+Hangman()
