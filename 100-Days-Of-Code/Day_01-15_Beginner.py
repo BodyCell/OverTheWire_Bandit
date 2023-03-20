@@ -77,14 +77,6 @@ def traffic_game():
 def rock_paper_scissors():
     import random
 
-    options = ("Rock","Paper","Scissors")
-
-    comp_choice = options[random.randint(0,2)].lower()
-
-    player_choice = input("Choose rock, paper, or scissors.\n").lower()
-
-    print("\nComputer chose", comp_choice+"...")
-
     def player_lost():
         return ((player_choice.startswith("r") and comp_choice.startswith("p")) 
                 or (player_choice.startswith("p") and comp_choice.startswith("s")) 
@@ -96,22 +88,44 @@ def rock_paper_scissors():
                 or (comp_choice.startswith("s") and player_choice.startswith("r")))
 
     def player_tie():
-        return ((comp_choice.startswith("r") and player_choice.startswith("r")) 
-            or (comp_choice.startswith("p") and player_choice.startswith("p")) 
-            or (comp_choice.startswith("s") and player_choice.startswith("s")))
+        return (comp_choice[0] == player_choice[0]) 
+            # or (comp_choice.startswith("p") and player_choice.startswith("p")) 
+            # or (comp_choice.startswith("s") and player_choice.startswith("s")))
+
+    def play_again(again):
+        while not again.startswith("Y") and not again.startswith("N"):
+            again = input("Would you like to play again? (Y/N)\n").upper()
+        return again.startswith("Y")
+    while True:
+        again=""
+        options = ("Rock","Paper","Scissors")
+
+        while True:
+            comp_choice = options[random.randint(0,2)].lower()
+
+            player_choice = input("Choose rock, paper, or scissors.\n").lower()
+
+            print("\nComputer chose", comp_choice+"...")
 
 
-    if player_lost():
-        print("sOrRy, YoU lOsT!")
+            if player_lost():
+                print("sOrRy, YoU lOsT!")
+                break
 
-    elif player_won():
-        print("Hey... you won!")
+            elif player_won():
+                print("Hey... you won!")
+                break
 
-    elif player_tie():
-        print("Tie game.")
+            elif player_tie():
+                print("Tie game.")
+                break
 
-    else:
-        print("You didn't make a valid choice")
+            else:
+                print("You didn't make a valid choice")
+        if not play_again(again):
+            print("\nGAME OVER! Application closing...\n\n")
+            break
+    
 
 # rock_paper_scissors()
 
@@ -284,4 +298,42 @@ def Hangman():
             break
     print("\nGAME OVER! Application closing...\n\n")
 
-Hangman()
+# Hangman()
+
+#----------------------------- Day8 Project: Caesar Cipher -----------------------------#
+
+def CaesarCipher():
+    
+    def in_list(char,list):
+        return char in list
+
+    alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+    alpha_len = len(alphabet)
+
+    direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
+    text = input("Type your message:\n").lower()
+    shift = int(input("Type the shift number:\n"))
+
+    code=""
+
+    while abs(shift)>alpha_len:
+        shift-=alpha_len
+
+    if direction.upper().startswith("E"):
+        for x in text:
+            if in_list(x,alphabet):
+                text_index = alphabet.index(x)
+                code += alphabet[text_index+(shift-alpha_len)]
+            else:
+                code+=x
+    elif direction.upper().startswith("D"):
+        for x in text:
+            if in_list(x,alphabet):
+                text_index = alphabet.index(x)
+                code += alphabet[text_index-shift]
+            else:
+                code+=x
+
+    print(code)
+
+# CaesarCipher()
