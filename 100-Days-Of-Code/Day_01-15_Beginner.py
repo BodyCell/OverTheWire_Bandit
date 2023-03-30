@@ -337,3 +337,36 @@ def CaesarCipher():
     print(code)
 
 # CaesarCipher()
+
+
+#----------------------------- Skip a few... -----------------------------#
+
+#----------------------------- Day17 Project: Quiz Project -----------------------------#
+
+import intermediate_modules.quiz_day17 as q
+
+text_bank = []
+answers = []
+question_bank = []
+
+
+class Question():
+    def __init__(self,text,answer):
+        self.text = text
+        self.answer = answer
+
+    def new_question():
+        pass
+
+for x in q.question_data:
+    text_bank.append(x["text"])
+    answers.append(x["answer"])
+    new_question = Question(text_bank,answers)
+
+
+print(text_bank)
+print(answers)
+current_question = {}
+
+for x in q.question_data:
+    current_question.update({x["text"]:x["answer"]})

@@ -44,7 +44,7 @@ My self-directed introduction to GitHub
 32. Send Email (SMTP & datetime module)
 33. ISS Tracker (API)
 34. Quizzler App 
-35. Rain Alert App
+35. Weather Alert App
 36. Stock News Monitoring App
 37. Habit Tracking Project (Pixela)
 38. Workout Tracking (Google Sheets)
