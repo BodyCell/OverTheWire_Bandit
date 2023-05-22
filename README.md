@@ -4,7 +4,7 @@ My self-directed introduction to GitHub
 "GitHub may serve to be an extremely valuable tool for the average coder and professional alike"
 -Gitonymous
 
-## Order of Projects
+<!-- ## Order of Projects
 <Beginner>
 1. Band Name Generator
 2. Tip Calculator
@@ -115,4 +115,4 @@ My self-directed introduction to GitHub
 98. Analyze & Visualize the Space Race
 99. Analyze Deaths Involving Police in US ( -__-)
 100. Predict Earnings using Multivariable Regression
-</ProfessionalPortfolio>
+</ProfessionalPortfolio> -->
